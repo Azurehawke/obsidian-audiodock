@@ -1,0 +1,10 @@
+{
+  "id": "audio-dock",
+  "name": "Audio Dock",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.5",
+  "description": "A persistent audio player docked at the bottom of the window. Keeps playing while you scroll or switch notes.",
+  "author": "Steve",
+  "authorUrl": "https://github.com/Azurehawke",
+  "isDesktopOnly": false
+}

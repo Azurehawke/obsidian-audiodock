@@ -1,0 +1,92 @@
+/* Audio Dock — persistent player bar at the bottom of the window */
+.audio-dock {
+	--audio-dock-height: 40px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex: 0 0 auto;
+	height: var(--audio-dock-height);
+	padding: 0 8px;
+	background: var(--background-secondary);
+	border-top: 1px solid var(--background-modifier-border);
+	font-size: var(--font-ui-small);
+	color: var(--text-normal);
+	z-index: var(--layer-status-bar);
+	-webkit-app-region: no-drag;
+}
+
+.audio-dock.audio-dock-fixed {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding-bottom: env(safe-area-inset-bottom, 0);
+}
+body.audio-dock-visible:has(.audio-dock-fixed) {
+	padding-bottom: 40px;
+}
+
+/* Lift Obsidian's floating status bar above the dock */
+body.audio-dock-visible .app-container > .status-bar {
+	bottom: 40px;
+}
+
+.audio-dock-select {
+	flex: 0 1 260px;
+	min-width: 120px;
+	max-width: 32%;
+	height: 28px;
+}
+.audio-dock-speed {
+	flex: 0 0 auto;
+	width: 68px;
+	height: 28px;
+}
+
+.audio-dock-controls {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.audio-dock-btn.audio-dock-btn {
+	padding: 4px;
+	height: 28px;
+	width: 28px;
+	box-shadow: none;
+	background: transparent;
+}
+.audio-dock-btn svg { width: 16px; height: 16px; }
+.audio-dock-play.audio-dock-play {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+.audio-dock-play.audio-dock-play:hover {
+	background: var(--interactive-accent-hover);
+	color: var(--text-on-accent);
+}
+.audio-dock-small svg { width: 14px; height: 14px; }
+
+.audio-dock-time {
+	font-variant-numeric: tabular-nums;
+	color: var(--text-muted);
+	min-width: 3.2em;
+	text-align: center;
+}
+
+.audio-dock-seek {
+	flex: 1 1 auto;
+	min-width: 80px;
+}
+
+/* Narrow windows: drop the skip buttons and shrink the dropdown */
+@media (max-width: 640px) {
+	.audio-dock { gap: 3px; padding: 0 4px; }
+	.audio-dock-select { max-width: 38%; min-width: 80px; }
+	.audio-dock-speed { width: 56px; }
+	.audio-dock-controls .audio-dock-btn:nth-child(2),
+	.audio-dock-controls .audio-dock-btn:nth-child(4) { display: none; }
+}
