@@ -31,4 +31,4 @@ There's also a ribbon icon to toggle the dock.
 npm install
 npm run build
 ```
-Pushing a version tag (e.g. `1.0.0`) runs the GitHub Action that builds and publishes a release.
+To publish a release: Actions → Release → **Run workflow**. It builds and releases the version in `manifest.json` (bump `manifest.json` and `versions.json` first for later versions).
